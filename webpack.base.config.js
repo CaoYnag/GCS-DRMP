@@ -11,11 +11,9 @@ module.exports = {
         path: path.join(__dirname, './dist')
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.vue$/,
-                use: [
-                    {
+                use: [{
                         loader: 'vue-loader',
                         options: {
                             loaders: {
@@ -69,12 +67,15 @@ module.exports = {
                 test: /\.(html|tpl)$/,
                 loader: 'html-loader'
             }
-        ]
+        ],
+        unknownContextCritical: false,
+        unknownContextRegExp: /^.\/.*$/
     },
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {
-            'vue': 'vue/dist/vue.esm.js'
+            'vue': 'vue/dist/vue.esm.js',
+            'cesium': path.resolve(__dirname, 'node_modules/cesium/Source')
         }
     }
 };

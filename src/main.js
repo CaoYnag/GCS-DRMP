@@ -9,10 +9,21 @@ import cslider from './views/cslider.vue'
 import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 import formCreate from '@form-create/iview'
-import { maker } from '@form-create/iview'
+import {
+    maker
+} from '@form-create/iview'
 import axios from 'axios'
 import qs from 'qs'
 import ol from 'ol'
+
+import Vuikit from 'vuikit'
+import VuikitIcons from '@vuikit/icons'
+import '@vuikit/theme'
+
+Vue.use(Vuikit);
+Vue.use(VuikitIcons);
+Vue.config.productionTip = false;
+
 // import createPersiste from 'vue-savedata'
 Vue.prototype.$axios = axios
 Vue.use(VueRouter);
@@ -28,11 +39,11 @@ const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-	 //  store.commit('setCurrRouteNme', {currRouteNme:to.name});
-	 //  store.dispatch('setMenuList').then( ()=> { //因为面包屑的数据来自左侧菜单,这边先获取左侧导航数据然后根据当前路径生成面包屑
-		// store.dispatch('setBreadCrumb');
-	 //  });
-    next(); 
+    //  store.commit('setCurrRouteNme', {currRouteNme:to.name});
+    //  store.dispatch('setMenuList').then( ()=> { //因为面包屑的数据来自左侧菜单,这边先获取左侧导航数据然后根据当前路径生成面包屑
+    // store.dispatch('setBreadCrumb');
+    //  });
+    next();
 });
 
 router.afterEach((to, from, next) => {
@@ -42,6 +53,6 @@ router.afterEach((to, from, next) => {
 new Vue({
     el: '#app',
     router: router,
-	store,
+    store,
     render: h => h(App)
 });

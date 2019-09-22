@@ -1,0 +1,13 @@
+html,
+body {
+    height: 100%;
+}
+
+body>div {
+    height: 100%;
+}
+
+.layout,
+.ivu-layout {
+    height: 100%;
+}
