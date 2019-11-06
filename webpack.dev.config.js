@@ -6,6 +6,9 @@ const merge = require("webpack-merge");
 const path = require("path");
 const webpackBaseConfig = require("./webpack.base.config.js");
 const fs = require("fs");
+const portfinder = require("portfinder");
+const utils = require("./utils");
+const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 
 fs.open("./src/config/env.js", "w", function(err, fd) {
   const buf = 'export default "development";';
@@ -13,7 +16,7 @@ fs.open("./src/config/env.js", "w", function(err, fd) {
   fs.write(fd, buf, 0, "utf-8", function(err, written, buffer) {});
 });
 
-module.exports = merge(webpackBaseConfig, {
+const devWebpackConfig = merge(webpackBaseConfig, {
   devtool: "#source-map",
   // these devServer options should be customized in /config/index.js
   devServer: {
@@ -87,4 +90,29 @@ module.exports = merge(webpackBaseConfig, {
       CESIUM_BASE_URL: JSON.stringify("../")
     })
   ]
+});
+module.exports = new Promise((resolve, reject) => {
+  portfinder.basePort = 8080;
+  portfinder.getPort((err, port) => {
+    if (err) {
+      reject(err);
+    } else {
+      // add port to devServer config
+      devWebpackConfig.devServer.port = port;
+
+      // Add FriendlyErrorsPlugin
+      devWebpackConfig.plugins.push(
+        new FriendlyErrorsPlugin({
+          compilationSuccessInfo: {
+            messages: [
+              `Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`
+            ]
+          },
+          onErrors: true ? utils.createNotifierCallback() : undefined
+        })
+      );
+
+      resolve(devWebpackConfig);
+    }
+  });
 });
