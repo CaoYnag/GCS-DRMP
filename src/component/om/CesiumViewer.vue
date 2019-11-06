@@ -9,11 +9,11 @@ import widgets from "cesium/Widgets/widgets.css";
 
 export default {
     name: 'cesiumViewer',
-    data: () => {
+    data: () => 
         {
             viewer: null
         }
-    },
+    ,
     mounted() {},
     created() {
         this.$nextTick(() => {
@@ -22,9 +22,6 @@ export default {
     },
     methods: {
         init: function () {
-            console.log("Cesium Info");
-            console.log(Cesium);
-        
             // add marker here
             var urlTemplateImageryProvider = new Cesium.UrlTemplateImageryProvider({
                 url: "http://localhost:9000/api/tms/osm/{z}/{y}/{x}"
