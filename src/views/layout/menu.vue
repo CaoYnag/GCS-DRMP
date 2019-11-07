@@ -36,26 +36,12 @@
             <Icon type="md-globe" />
             <router-link to="/datasource/layertype">三维地形数据</router-link>
         </template>
-        <Submenu name="模型数据">
-            <template slot="title">
-                <Button @click="changePage('/datasource/model','')">
-                    模型数据
-                </Button>
-            </template>
-            <MenuItem name="2-1">IVE</MenuItem>
-            <MenuItem name="2-2">FLT</MenuItem>
-        </Submenu>
-        <Submenu name="倾斜摄影">
-            <template slot="title">
-                <router-link to="/om/cesium">倾斜摄影</router-link>
-            </template>
-            <MenuItem name="3DTiles">
-            <router-link to="/om/cesium">3DTiles</router-link>
-            </MenuItem>
-            <MenuItem name="OSGB">
-            <router-link to="/om/cesium">OSGB</router-link>
-            </MenuItem>
-        </Submenu>
+        <MenuItem name="model">
+        <router-link to="/om/model">模型数据</router-link>
+        </MenuItem>
+        <MenuItem name="oblique">
+        <router-link to="/om/cesium">倾斜摄影</router-link>
+        </MenuItem>
         <Submenu name="街景数据">
             <template slot="title">
                 <router-link to="/sv/map">街景数据</router-link>
@@ -253,7 +239,7 @@ a.final {
     color: #FFFFFF;
 }
 
-.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item {
+.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-submenu .ivu-menu-item {
     background: #f1f1f1;
     color: #000000;
 }

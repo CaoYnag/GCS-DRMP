@@ -78,7 +78,7 @@
     color: #FFFFFF;
 }
 
-.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item {
+.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-submenu .ivu-menu-item {
     background: #f1f1f1;
     color: #000000;
 }
