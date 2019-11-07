@@ -2,6 +2,7 @@ import cform from "./views/cform";
 import cslider from "./views/cslider";
 import map from "./component/sv/map";
 import rg_uk from "./component/sv/Regions_uk";
+import prv from "./component/sv/Preview";
 import rgp from "./component/sv/RegionPreview";
 import cesium from "./component/om/CesiumViewer";
 import ml from "./component/om/ModelList";
@@ -69,6 +70,11 @@ const routers = [
         path: "region/preview/:uid",
         name: "rgp",
         component: rgp
+      },
+      {
+        path: "preview/:geoid",
+        name: "prv",
+        component: prv
       },
       {
         path: "map",

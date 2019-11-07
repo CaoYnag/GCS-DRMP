@@ -54,6 +54,7 @@ export default {
     },
     methods: {
         init() {
+            // use mocks data instead of req server.
             this.items = [{
                 "uid": "dGVtcG9ialdlZCBBdWcgMjggMTU6NTc6NTMgQ1NUIDIwMTk=",
                 "name": "temp",
@@ -90,9 +91,10 @@ export default {
                 "worker": null
             }];
             // axios.get("http://localhost:9094/api/list").then((rsp) => {
-            //   this.items = rsp.data.data;
+            //     this.items = rsp.data.data;
+            //     this.formatData();
             // }).catch(err => {
-            //   console.log(err);
+            //     console.log(err);
             // });
             console.log(this.items);
             this.formatData();

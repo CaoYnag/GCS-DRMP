@@ -20,7 +20,7 @@
 
   export default {
     data: () => ({
-      uid: null,
+      geoid: null,
       infoUrl: null,
       imgUrl: null,
       scene: null,
@@ -51,22 +51,13 @@
     },
     methods: {
       init() {
-        this.uid = this.$route.params.uid;
+        this.geoid = this.$route.params.geoid;
         this.imgUrl = "http://localhost:9092/api/sv/image?z=4&id=";
-        this.infoUrl = "http://localhost:9092/api/sv/info?uid=" + this.uid + "&geoid=";
+        this.infoUrl = "http://localhost:9092/api/sv/info?geoid=";
         this.raycaster = new THREE.Raycaster();
         this.mouseVector = new THREE.Vector3();
-        axios.get("http://localhost:9092/api/data/region/entry/" + this.uid).then((rsp) => {
-          if (rsp.data.data && rsp.data.data.length > 0)
-            this.initRegion(rsp.data.data[0].geoid);
-        }).catch(err => {
-          console.log(err);
-        });
         this.initMesh();
-      },
-      initRegion(entry) {
-        console.log(entry);
-        this.loadData(entry);
+        this.loadData(this.geoid);
       },
       initMesh() {
         var mesh;
