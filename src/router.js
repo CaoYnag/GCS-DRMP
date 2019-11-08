@@ -6,6 +6,7 @@ import prv from "./component/sv/Preview";
 import rgp from "./component/sv/RegionPreview";
 import cesium from "./component/om/CesiumViewer";
 import ml from "./component/om/ModelList";
+import moe from "./component/om/ModelsOnEarth";
 
 const layout = resolve => require(["./views/layout/layout.vue"], resolve);
 const maptype = resolve => require(["./views/gcs/maptype.vue"], resolve);
@@ -98,6 +99,11 @@ const routers = [
         path: "model",
         name: "model",
         component: ml
+      },
+      {
+        path: "moe",
+        name: "moe",
+        component: moe
       },
       {
         path: "map",
